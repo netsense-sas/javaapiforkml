@@ -54,6 +54,8 @@ import de.micromata.opengis.kml.v_2_2_0.annotations.Obvious;
 @XmlType(name = "IconStyleType", propOrder = {
     "scale",
     "heading",
+    "altitude",
+    "speed",
     "icon",
     "hotSpot",
     "iconStyleSimpleExtension",
@@ -83,6 +85,7 @@ public class IconStyle
      */
     @XmlElement(defaultValue = "1.0")
     protected double scale;
+    
     /**
      * <heading>
      * <p>
@@ -108,6 +111,10 @@ public class IconStyle
      */
     @XmlElement(defaultValue = "0.0")
     protected double heading;
+    @XmlElement(defaultValue = "0.0")
+    protected double speed;
+    @XmlElement(defaultValue = "0.0")
+    protected double altitude;
     /**
      * <icon> see also <icon>.
      * <p>
@@ -232,6 +239,53 @@ public class IconStyle
     public void setScale(double value) {
         this.scale = value;
     }
+    /**
+     * @see scale
+     * 
+     * @return
+     *     possible object is
+     *     {@link Double}
+     *     
+     */
+    public double getSpeed() {
+        return speed;
+    }
+
+    /**
+     * @see scale
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Double}
+     *     
+     */
+    public void setSpeed(double value) {
+        this.speed = value;
+    }
+
+    /**
+     * @see scale
+     * 
+     * @return
+     *     possible object is
+     *     {@link Double}
+     *     
+     */
+    public double getAltitude() {
+        return altitude;
+    }
+
+    /**
+     * @see scale
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Double}
+     *     
+     */
+    public void setAltitude(double value) {
+        this.altitude = value;
+    }
 
     /**
      * @see heading
@@ -336,6 +390,10 @@ public class IconStyle
         result = ((prime*result)+((int)(temp^(temp >>>(32)))));
         temp = Double.doubleToLongBits(heading);
         result = ((prime*result)+((int)(temp^(temp >>>(32)))));
+        temp = Double.doubleToLongBits(speed);
+        result = ((prime*result)+((int)(temp^(temp >>>(32)))));
+        temp = Double.doubleToLongBits(altitude);
+        result = ((prime*result)+((int)(temp^(temp >>>(32)))));
         result = ((prime*result)+((icon == null)? 0 :icon.hashCode()));
         result = ((prime*result)+((hotSpot == null)? 0 :hotSpot.hashCode()));
         result = ((prime*result)+((iconStyleSimpleExtension == null)? 0 :iconStyleSimpleExtension.hashCode()));
@@ -362,6 +420,12 @@ public class IconStyle
             return false;
         }
         if (heading!= other.heading) {
+            return false;
+        }
+        if (speed!= other.speed) {
+            return false;
+        }
+        if (altitude!= other.altitude) {
             return false;
         }
         if (icon == null) {
@@ -587,7 +651,28 @@ public class IconStyle
         this.setHeading(heading);
         return this;
     }
-
+    /**
+     * fluent setter
+     * @see #setSpeed(double)
+     * 
+     * @param speed
+     *     required parameter
+     */
+    public IconStyle withSpeed(final double speed) {
+        this.setSpeed(speed);
+        return this;
+    }
+    /**
+     * fluent setter
+     * @see #setAltitude(double)
+     * 
+     * @param altitude
+     *     required parameter
+     */
+    public IconStyle withAltitude(final double altitude) {
+        this.setSpeed(altitude);
+        return this;
+    }
     /**
      * fluent setter
      * @see #setIcon(Icon)
